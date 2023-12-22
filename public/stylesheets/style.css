@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('https://empire-s3-production.bobvila.com/articles/wp-content/uploads/2021/11/The-Best-Rental-Listing-Site-Options.jpg') center/cover no-repeat fixed;
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value for transparency */
 }
 
-a {
-  color: #00B7FF;
+nav {
+  background-color: transparent; /* Make the navigation bar transparent */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  backdrop-filter: blur(20px); /* Increase the blur value for a stronger effect */
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 5px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #a60000;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+footer {
+  background-color: transparent; /* Make the footer transparent */
+  text-align: center;
+  font-weight: 400;
+  padding: 10px;
+  backdrop-filter: blur(20px); /* Increase the blur value for a stronger effect */
 }
