@@ -8,15 +8,15 @@ body {
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: url('https://empire-s3-production.bobvila.com/articles/wp-content/uploads/2021/11/The-Best-Rental-Listing-Site-Options.jpg') center/cover no-repeat fixed;
-  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value for transparency */
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 nav {
-  background-color: transparent; /* Make the navigation bar transparent */
+  background-color: transparent; 
   color: #fff;
   padding: 10px;
   text-align: center;
-  backdrop-filter: blur(20px); /* Increase the blur value for a stronger effect */
+  backdrop-filter: blur(20px); 
 }
 
 nav a {
@@ -37,20 +37,20 @@ main {
 }
 
 footer {
-  background-color: transparent; /* Make the footer transparent */
+  background-color: transparent; 
   text-align: center;
   font-weight: 400;
   padding: 10px;
-  backdrop-filter: blur(20px); /* Increase the blur value for a stronger effect */
+  backdrop-filter: blur(20px); 
 }
 
 #addListingForm {
-  width: 400px; /* Adjust the width as needed */
+  width: 400px; 
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff; /* Add a background color to the form */
+  background-color: #fff; 
   box-sizing: border-box;
 }
 
@@ -62,14 +62,14 @@ footer {
 #addListingForm input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px; /* Increase the margin for better spacing */
+  margin-bottom: 15px; 
   box-sizing: border-box;
 }
 
 #addListingForm button {
   background-color: #4caf50;
   color: white;
-  padding: 12px; /* Increase padding for a larger button */
+  padding: 12px; 
   border: none;
   border-radius: 4px;
   cursor: pointer;

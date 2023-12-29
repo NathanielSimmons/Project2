@@ -8,14 +8,14 @@ newListing = async (req, res) => {
     }
   };
 
-getAllListings = async (req, res) => {
-  try {
-    const listings = await Newlisting.find();
-    res.render('/newlistings/index', { listings });
-  } catch (error) {
-    res.render({ error: 'Internal Server Error' });
-  }
-};
+  getAllListings = async (req, res) => {
+    try {
+      const listings = await Newlisting.find();
+      res.render('newlistings/index', { listings });
+    } catch (error) {
+      res.render('error', { error: 'Internal Server Error' });
+    }
+  };
 
 getListingById = async (req, res) => {
   console.log("wrong one!")
@@ -24,28 +24,33 @@ getListingById = async (req, res) => {
     if (!listing) {
       return res.render({ error: 'Listing not found' });
     }
-    res.json(listing);
+    res.render('listingDetails', { listing });
   } catch (error) {
     console.log('Internal Server Errorrrrrrrrr');
   }
 };
 
 createListing = async (req, res) => {
-  const { pictures, bedrooms, bathrooms, sqFootage, reservation } = req.body;
-
   try {
-    const newListing = new Newlisting({
-      pictures,
-      bedrooms,
-      bathrooms,
-      sqFootage,
-      reservation,
+    const { pictures, bedrooms, bathrooms, sqFootage, startDate, endDate, address, pricePerNight } = req.body;
+    const newListing = new Listing({
+      pictures: pictures.split(','), 
+      bedrooms: parseInt(bedrooms),
+      bathrooms: parseInt(bathrooms),
+      sqFootage: parseInt(sqFootage),
+      address,
+      pricePerNight: parseFloat(pricePerNight),
     });
 
+
     await newListing.save();
-    res.status(201).render(newListing);
+
+   // Render the form page with the "Saved!" message
+   res.render('new', { saved: true });
   } catch (error) {
-    res.render({ error: 'Internal Server Error' });
+    console.error('Error creating listing:', error);
+    // Handle the error, e.g., render an error page
+    res.render('error', { error });
   }
 };
 
@@ -85,9 +90,9 @@ deleteListing = async (req, res) => {
 
 module.exports = {
 new: newListing,
- deleteListing,
- createListing,
-    updateListing,
-    getListingById,
-    getAllListings
+deleteListing,
+createListing,
+updateListing,
+getListingById,
+getAllListings
 }

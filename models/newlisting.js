@@ -20,13 +20,11 @@ const newListingSchema = new mongoose.Schema({
     min: 500,
     max: 10000,
   },
-  reservation: {
-    startDate: { type: Date, required: true },
-    endDate: { type: Date, required: true },
-  },
-  address: {
-    type: String,
+  pricePerNight: {
+    type: Number,
     required: true,
+    min: 200,
+    max: 3000,
   },
 });
 
