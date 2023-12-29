@@ -10,7 +10,7 @@
 <body>
 
     <nav>
-      <a href="/listings" <%- title === 'All Listings' ? 'class="active"' : '' %>>ALL LISTINGS</a>
+      <a href="/all-listings" <%- title === 'All Listings' ? 'class="active"' : '' %>>ALL LISTINGS</a>
       <% if (user) { %>
         <a href="/newlistings/new" <%- title === 'Add Listing' ? 'class="active"' : '' %>>ADD LISTING</a>
         <a href="/listings/reserve" <%- title === 'Reserve Listing' ? 'class="active"' : '' %>>RESERVE LISTING</a>

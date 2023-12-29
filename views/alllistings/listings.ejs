@@ -1,0 +1,18 @@
+<!-- allListings.ejs -->
+<%- include('../partials/header') %>
+
+<h2>All Listings</h2>
+
+<ul>
+    <% listings.forEach(listing => { %>
+        <li>
+            <h3><%= listing.address %></h3>
+            <p>Bedrooms: <%= listing.bedrooms %></p>
+            <p>Bathrooms: <%= listing.bathrooms %></p>
+            <p>Square Footage: <%= listing.sqFootage %></p>
+            <!-- Add more details as needed -->
+        </li>
+    <% }); %>
+</ul>
+
+<%- include('../partials/footer') %>
