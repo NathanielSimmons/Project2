@@ -1,27 +1,36 @@
 const Newlisting = require('../models/newlisting');
 
-exports.getAllListings = async (req, res) => {
+newListing = async (req, res) => {
+    try {
+      res.render('newlistings/new', {title: "Add Listing" });
+    } catch (error) {
+      res.render({ error: 'Internal Server Error' });
+    }
+  };
+
+getAllListings = async (req, res) => {
   try {
     const listings = await Newlisting.find();
-    res.json(listings);
+    res.render('/newlistings/index', { listings });
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.render({ error: 'Internal Server Error' });
   }
 };
 
-exports.getListingById = async (req, res) => {
+getListingById = async (req, res) => {
+  console.log("wrong one!")
   try {
     const listing = await Newlisting.findById(req.params.id);
     if (!listing) {
-      return res.status(404).json({ error: 'Listing not found' });
+      return res.render({ error: 'Listing not found' });
     }
     res.json(listing);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.log('Internal Server Errorrrrrrrrr');
   }
 };
 
-exports.createListing = async (req, res) => {
+createListing = async (req, res) => {
   const { pictures, bedrooms, bathrooms, sqFootage, reservation } = req.body;
 
   try {
@@ -34,13 +43,13 @@ exports.createListing = async (req, res) => {
     });
 
     await newListing.save();
-    res.status(201).json(newListing);
+    res.status(201).render(newListing);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.render({ error: 'Internal Server Error' });
   }
 };
 
-exports.updateListing = async (req, res) => {
+updateListing = async (req, res) => {
   const { pictures, bedrooms, bathrooms, sqFootage, reservation } = req.body;
 
   try {
@@ -51,25 +60,34 @@ exports.updateListing = async (req, res) => {
     );
 
     if (!updatedListing) {
-      return res.status(404).json({ error: 'Listing not found' });
+      return res.render({ error: 'Listing not found' });
     }
 
     res.json(updatedListing);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.render({ error: 'Internal Server Error' });
   }
 };
 
-exports.deleteListing = async (req, res) => {
+deleteListing = async (req, res) => {
   try {
     const deletedListing = await Newlisting.findByIdAndDelete(req.params.id);
 
     if (!deletedListing) {
-      return res.status(404).json({ error: 'Listing not found' });
+      return res.render({ error: 'Listing not found' });
     }
 
     res.json(deletedListing);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.render({ error: 'Internal Server Error' });
   }
 };
+
+module.exports = {
+new: newListing,
+ deleteListing,
+ createListing,
+    updateListing,
+    getListingById,
+    getAllListings
+}
