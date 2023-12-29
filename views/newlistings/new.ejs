@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 
-<form id="addListingForm" action="/listings" method="POST">
+<form id="addListingForm" action="/newlistings" method="POST">
   <label for="pictures">Pictures (comma-separated URLs):</label>
   <input type="text" id="pictures" name="pictures" required>
 
@@ -23,8 +23,8 @@
   <button type="submit">Add Listing</button>
 </form>
 
-<% if (saved) { %>
-  <p>Saved!</p>
+<% if (saved || typeof saved === 'undefined') { %>
+  <p><%= message %></p>
 <% } %>
 
 <%- include('../partials/footer') %>

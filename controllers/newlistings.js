@@ -2,20 +2,20 @@ const Newlisting = require('../models/newlisting');
 
 newListing = async (req, res) => {
     try {
-      res.render('newlistings/new', {title: "Add Listing" });
-    } catch (error) {
-      res.render({ error: 'Internal Server Error' });
-    }
-  };
-
-  getAllListings = async (req, res) => {
-    try {
-      const listings = await Newlisting.find();
-      res.render('newlistings/index', { listings });
+      res.render('newlistings/new', {title: "Add Listing", saved: false });
     } catch (error) {
       res.render('error', { error: 'Internal Server Error' });
     }
   };
+
+getAllListings = async (req, res) => {
+    try {
+        const listings = await Newlisting.find();
+        res.render('allListings', { title: 'All Listings', listings });
+    } catch (error) {
+        res.render('error', { error: 'Internal Server Error' });
+    }
+};
 
 getListingById = async (req, res) => {
   console.log("wrong one!")
@@ -32,8 +32,8 @@ getListingById = async (req, res) => {
 
 createListing = async (req, res) => {
   try {
-    const { pictures, bedrooms, bathrooms, sqFootage, startDate, endDate, address, pricePerNight } = req.body;
-    const newListing = new Listing({
+    const { pictures, bedrooms, bathrooms, sqFootage, address, pricePerNight } = req.body;
+    const newNewListing = new Newlisting({
       pictures: pictures.split(','), 
       bedrooms: parseInt(bedrooms),
       bathrooms: parseInt(bathrooms),
@@ -43,14 +43,12 @@ createListing = async (req, res) => {
     });
 
 
-    await newListing.save();
+    await newNewListing.save();
 
-   // Render the form page with the "Saved!" message
-   res.render('new', { saved: true });
+    res.render('newlistings/new', { title: "Add Listing", saved: true, message: 'Saved!' });
   } catch (error) {
     console.error('Error creating listing:', error);
-    // Handle the error, e.g., render an error page
-    res.render('error', { error });
+    res.render('error', { error, message: 'Failed to save listing.' });
   }
 };
 
