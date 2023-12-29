@@ -3,6 +3,6 @@ const router = express.Router();
 const listingsCtrl = require('../controllers/newlistings');
 
 
-router.get('/all-listings', listingsCtrl.getAllListings);
+router.get('/', listingsCtrl.getAllListings);
 
 module.exports = router;

@@ -11,7 +11,7 @@ newListing = async (req, res) => {
 getAllListings = async (req, res) => {
     try {
         const listings = await Newlisting.find();
-        res.render('allListings', { title: 'All Listings', listings });
+        res.render('all-listings/listings', { title: 'All Listings', listings });
     } catch (error) {
         res.render('error', { error: 'Internal Server Error' });
     }
