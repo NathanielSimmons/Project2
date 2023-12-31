@@ -4,6 +4,8 @@
   <div class="listings-container">
     <% listings.forEach((listing) => { %>
       <div class="listing">
+        <h3 class="address"><%= listing.address %></h3>
+        
         <div class="pictures-container">
           <% listing.pictures.slice(0, 3).forEach((picture, index) => { %>
             <img src="<%= picture %>" alt="Listing Picture">
@@ -11,7 +13,6 @@
         </div>
 
         <div class="listing-details">
-          <h3><%= listing.address %></h3>
           <ul>
             <li>Bedrooms: <%= listing.bedrooms %></li>
             <li>Bathrooms: <%= listing.bathrooms %></li>

@@ -85,7 +85,10 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  max-width: 1000px; /* Set the maximum width of the container */
+  width: 100%;
   align-items: center; /* Center vertically */
+  margin: 0 auto; /* Center horizontally by setting margin */
 }
 
 .listing {
@@ -113,4 +116,14 @@ footer {
 .listing-details {
   margin-top: 10px;
   font-weight: bold; /* Make the font bold */
+  text-align: center; /* Center the features text */
+}
+
+.listing-details li {
+  list-style-type: none; /* Remove bullet points */
+}
+
+.address {
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
