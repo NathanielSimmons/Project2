@@ -26,6 +26,10 @@ const newListingSchema = new mongoose.Schema({
     min: 200,
     max: 3000,
   },
+  address: {
+    type: String,
+    required: true,
+  },
 });
 
 const Newlisting = mongoose.model('Newlisting', newListingSchema);
