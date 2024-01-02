@@ -17,18 +17,6 @@ getAllListings = async (req, res) => {
     }
 };
 
-getListingById = async (req, res) => {
-  console.log("wrong one!")
-  try {
-    const listing = await Newlisting.findById(req.params.id);
-    if (!listing) {
-      return res.render({ error: 'Listing not found' });
-    }
-    res.render('listingDetails', { listing });
-  } catch (error) {
-    console.log('Internal Server Errorrrrrrrrr');
-  }
-};
 
 createListing = async (req, res) => {
   try {
@@ -52,45 +40,27 @@ createListing = async (req, res) => {
   }
 };
 
-updateListing = async (req, res) => {
-  const { pictures, bedrooms, bathrooms, sqFootage, reservation } = req.body;
-
-  try {
-    const updatedListing = await Newlisting.findByIdAndUpdate(
-      req.params.id,
-      { pictures, bedrooms, bathrooms, sqFootage, reservation },
-      { new: true }
-    );
-
-    if (!updatedListing) {
-      return res.render({ error: 'Listing not found' });
-    }
-
-    res.json(updatedListing);
-  } catch (error) {
-    res.render({ error: 'Internal Server Error' });
-  }
-};
-
 deleteListing = async (req, res) => {
+  const listingId = req.params.id;
+
   try {
-    const deletedListing = await Newlisting.findByIdAndDelete(req.params.id);
+    const deletedListing = await Newlisting.findByIdAndDelete(listingId);
 
     if (!deletedListing) {
-      return res.render({ error: 'Listing not found' });
+      return res.status(404).render('error', { error: 'Listing not found' });
     }
 
-    res.json(deletedListing);
+    // Redirect to the all-listings page
+    res.redirect('/all-listings');
   } catch (error) {
-    res.render({ error: 'Internal Server Error' });
+    res.status(500).render('error', { error: 'Internal Server Error' });
   }
 };
+
 
 module.exports = {
 new: newListing,
 deleteListing,
 createListing,
-updateListing,
-getListingById,
 getAllListings
 }

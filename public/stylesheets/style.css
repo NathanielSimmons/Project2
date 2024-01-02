@@ -129,3 +129,13 @@ footer {
   color: #a60000;
   text-align: center;
 }
+
+.listing-options a {
+  color: grey;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.listing-options a:hover {
+  color: #a60000; 
+}

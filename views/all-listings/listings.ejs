@@ -19,10 +19,10 @@
             <li>Square Footage: <%= listing.sqFootage %> sq ft</li>
             <li>Price per Night: $<%= listing.pricePerNight.toFixed(2) %></li>
           </ul>
-          <div class="listing-buttons">
-              <button onclick="reserveListing('<%= listing._id %>')">Reserve</button>
-              <button onclick="reviewListing('<%= listing._id %>')">Review</button>
-              <button onclick="deleteListing('<%= listing._id %>')">Delete</button>
+          <div class="listing-options">
+            <a href="/all-listings/review/<%= listing._id %>" class="review-link">Review</a>
+            <a href="/all-listings/reserve/<%= listing._id %>" class="reserve-link">Reserve</a>
+             <a href="/all-listings/delete/<%= listing._id %>" class="delete-link">Delete</a>
           </div>
         </div>
       </div>
