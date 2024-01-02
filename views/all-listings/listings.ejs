@@ -5,7 +5,7 @@
     <% listings.forEach((listing) => { %>
       <div class="listing">
         <h3 class="address"><%= listing.address %></h3>
-        
+
         <div class="pictures-container">
           <% listing.pictures.slice(0, 3).forEach((picture, index) => { %>
             <img src="<%= picture %>" alt="Listing Picture">

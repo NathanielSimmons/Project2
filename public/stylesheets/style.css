@@ -126,4 +126,6 @@ footer {
 .address {
   font-size: 1.2em;
   margin-bottom: 10px;
+  color: #a60000;
+  text-align: center;
 }
