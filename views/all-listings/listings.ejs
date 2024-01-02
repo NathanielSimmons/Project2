@@ -18,8 +18,12 @@
             <li>Bathrooms: <%= listing.bathrooms %></li>
             <li>Square Footage: <%= listing.sqFootage %> sq ft</li>
             <li>Price per Night: $<%= listing.pricePerNight.toFixed(2) %></li>
-            <!-- Add more details as needed -->
           </ul>
+          <div class="listing-buttons">
+              <button onclick="reserveListing('<%= listing._id %>')">Reserve</button>
+              <button onclick="reviewListing('<%= listing._id %>')">Review</button>
+              <button onclick="deleteListing('<%= listing._id %>')">Delete</button>
+          </div>
         </div>
       </div>
     <% }) %>
