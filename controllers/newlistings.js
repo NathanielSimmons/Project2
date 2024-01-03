@@ -50,7 +50,7 @@ deleteListing = async (req, res) => {
       return res.status(404).render('error', { error: 'Listing not found' });
     }
 
-    // Redirect to the all-listings page
+    
     res.redirect('/all-listings');
   } catch (error) {
     res.status(500).render('error', { error: 'Internal Server Error' });

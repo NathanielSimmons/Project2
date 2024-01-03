@@ -9,7 +9,11 @@ const reservationSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  listing: {
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+   listing: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Newlisting',
   },

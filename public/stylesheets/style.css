@@ -85,42 +85,42 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  max-width: 1000px; /* Set the maximum width of the container */
+  max-width: 1000px; 
   width: 100%;
-  align-items: center; /* Center vertically */
-  margin: 0 auto; /* Center horizontally by setting margin */
+  align-items: center; 
+  margin: 0 auto; 
 }
 
 .listing {
   border: 1px solid #ccc;
   padding: 10px;
-  width: calc(50% - 20px); /* Adjust the width based on your preference */
+  width: calc(50% - 20px); 
   box-sizing: border-box;
-  background-color: #fff; /* Set the background color to white */
+  background-color: #fff; 
 }
 
 .pictures-container {
   display: flex;
-  justify-content: center; /* Center pictures horizontally */
+  justify-content: center; 
   overflow: hidden;
   height: 150px;
 }
 
 .pictures-container img {
-  width: calc(33.33% - 10px); /* Adjusted width with margin */
+  width: calc(33.33% - 10px); 
   height: 100%;
   object-fit: cover;
-  margin: 0 5px; /* Add margin to create space between pictures */
+  margin: 0 5px; 
 }
 
 .listing-details {
   margin-top: 10px;
-  font-weight: bold; /* Make the font bold */
-  text-align: center; /* Center the features text */
+  font-weight: bold; 
+  text-align: center; 
 }
 
 .listing-details li {
-  list-style-type: none; /* Remove bullet points */
+  list-style-type: none; 
 }
 
 .address {
