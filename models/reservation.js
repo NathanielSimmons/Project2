@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 
 const reservationSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
   startDate: {
     type: Date,
     required: true,
@@ -9,11 +17,7 @@ const reservationSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  totalPrice: {
-    type: Number,
-    required: true,
-  },
-   listing: {
+  listing: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Newlisting',
   },

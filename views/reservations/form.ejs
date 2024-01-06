@@ -1,9 +1,8 @@
 <%- include('../partials/header', { title: title }) %>
 
 <div class="reservation-form-container">
-  <h2>Reserve Listing</h2>
 
-  <!-- Display listing details -->
+
   <h3><%= listing.address %></h3>
   <div class="pictures-container">
     <% listing.pictures.slice(0, 3).forEach((picture, index) => { %>
@@ -17,26 +16,28 @@
     <li>Price per Night: $<%= listing.pricePerNight.toFixed(2) %></li>
   </ul>
 
-  <!-- Reservation form -->
-  <form action="/all-listings/<%= listing._id %>/reserve" method="POST">
-    <!-- First Name -->
+  
+<form action="/reservations/<%= listing._id %>/reserve" method="POST" class="reservation-form">
+  <div class="form-group">
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" required>
+  </div>
 
-    <!-- Last Name -->
+  <div class="form-group">
     <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" name="lastName" required>
+  </div>
 
-    <!-- Start Date -->
+  <div class="form-group">
     <label for="startDate">Start Date:</label>
     <input type="date" id="startDate" name="startDate" required>
+  </div>
 
-    <!-- End Date -->
+  <div class="form-group">
     <label for="endDate">End Date:</label>
     <input type="date" id="endDate" name="endDate" required>
+  </div>
 
-    <button type="submit">Reserve Now</button>
-  </form>
-</div>
+  <button type="submit">Reserve Now</button>
 
 <%- include('../partials/footer') %>
