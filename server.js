@@ -14,7 +14,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var listingsRouter = require('./routes/all-listings');
 var newListingsRouter = require('./routes/newlistings');
-const reservationsRouter = require('./routes/reservations')
+var reservationsRouter = require('./routes/reservations')
 
 var app = express();
 

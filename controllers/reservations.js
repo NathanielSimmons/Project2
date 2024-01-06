@@ -1,7 +1,7 @@
 const Reservation = require('../models/reservation');
 const Newlisting = require('../models/newlisting');
 
-const showReservationForm = async (req, res) => {
+showReservationForm = async (req, res) => {
   try {
 
     const listingId = req.params.id;
@@ -14,7 +14,7 @@ const showReservationForm = async (req, res) => {
       return res.status(404).render('error', { error: 'Listing not found' });
     }
 
-    res.render('reservation-form', { listing });
+    res.render('reservations/form', { title: 'Reserve Listing', listingId, listing });
   } catch (error) {
 
     res.status(500).render('error', { error: 'Internal Server Error' });
@@ -70,6 +70,6 @@ const calculateTotalPrice = (startDate, endDate, pricePerNight) => {
 };
 
 module.exports = {
-  
+  showReservationForm,
   postReservation
 };
