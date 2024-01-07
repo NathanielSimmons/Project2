@@ -40,8 +40,7 @@ footer {
   background-color: transparent; 
   text-align: center;
   font-weight: 400;
-  padding: 10px;
-  backdrop-filter: blur(20px); 
+  padding: 10px; 
 }
 
 #addListingForm {
@@ -188,6 +187,10 @@ footer {
 
 .reservation-form-container button:hover {
   background-color: #45a049;
+}
+
+.reservation-form-container li {
+  list-style-type: none; 
 }
 
 .form-group {

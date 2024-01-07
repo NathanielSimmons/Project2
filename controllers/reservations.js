@@ -14,7 +14,8 @@ showReservationForm = async (req, res) => {
       return res.status(404).render('error', { error: 'Listing not found' });
     }
 
-    res.render('reservations/form', { title: 'Reserve Listing', listingId, listing });
+  console.log(listing); // Check if the listing object is logged in the console
+  res.render('reservations/form', { title: 'Reserve Listing', listingId, listing, successMessage: '' });
   } catch (error) {
 
     res.status(500).render('error', { error: 'Internal Server Error' });
@@ -24,52 +25,51 @@ showReservationForm = async (req, res) => {
 postReservation = async (req, res) => {
   try {
     const listingId = req.params.id;
-    const { startDate, endDate } = req.body;
+    const { firstName, lastName, startDate, endDate } = req.body;
 
-   
     if (!startDate || !endDate) {
       return res.status(400).render('error', { error: 'Invalid reservation dates' });
     }
 
-    
     const listing = await Newlisting.findById(listingId);
 
-    
     if (!listing) {
       return res.status(404).render('error', { error: 'Listing not found' });
     }
 
-    
-    const totalPrice = calculateTotalPrice(startDate, endDate, listing.pricePerNight);
-
-    
     const reservation = new Reservation({
+      firstName: firstName,
+      lastName: lastName,
       startDate: new Date(startDate),
       endDate: new Date(endDate),
-      totalPrice: totalPrice,
       listing: listing._id,
     });
 
-    
     await reservation.save();
 
-    
-    res.redirect(`/all-listings/${listingId}/reserve-success?totalPrice=${totalPrice}`);
+    const successMessage = 'Reserved!';
+
+    res.render('reservations/form', { title: 'Reserve Listing', listingId,listing, successMessage });
   } catch (error) {
+    
     console.error('Error creating reservation:', error);
     res.status(500).render('error', { error: 'Internal Server Error' });
   }
 };
 
-const calculateTotalPrice = (startDate, endDate, pricePerNight) => {
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-  const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
-  const totalPrice = days * pricePerNight;
-  return totalPrice;
+showReservedListings = async (req, res) => {
+  try {
+  
+    const reservations = await Reservation.find().populate('listing');
+    res.render('reservations/reservedListings', { title: 'Reserved Listings', reservations });
+  } catch (error) {
+    console.error('Error fetching reserved listings:', error);
+    res.status(500).render('error', { error: 'Internal Server Error' });
+  }
 };
 
 module.exports = {
   showReservationForm,
-  postReservation
+  postReservation,
+  showReservedListings
 };

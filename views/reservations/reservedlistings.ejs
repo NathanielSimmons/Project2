@@ -1,0 +1,20 @@
+<%- include('../partials/header', { title: title }) %>
+
+<div class="reserved-listings-container">
+  <% reservations.forEach((reservation) => { %>
+    <div class="reserved-listing">
+      <h2><%= reservation.listing.address %></h2>
+      <div class="pictures-container">
+        <% reservation.listing.pictures.slice(0, 3).forEach((picture, index) => { %>
+          <img src="<%= picture %>" alt="Listing Picture">
+        <% }) %>
+      </div>
+      <ul>
+        <li>First Name: <%= reservation.firstName %></li>
+        <li>Last Name: <%= reservation.lastName %></li>
+        <li>Start Date: <%= reservation.startDate %></li>
+        <li>End Date: <%= reservation.endDate %></li>
+      </ul>
+    </div>
+  <% }) %>
+</div>

@@ -40,4 +40,8 @@
 
   <button type="submit">Reserve Now</button>
 
+
+<% if (successMessage) { %>
+  <p><%= successMessage %></p>
+<% } %>
 <%- include('../partials/footer') %>
