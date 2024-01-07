@@ -14,7 +14,6 @@ showReservationForm = async (req, res) => {
       return res.status(404).render('error', { error: 'Listing not found' });
     }
 
-  console.log(listing); // Check if the listing object is logged in the console
   res.render('reservations/form', { title: 'Reserve Listing', listingId, listing, successMessage: '' });
   } catch (error) {
 
@@ -68,8 +67,45 @@ showReservedListings = async (req, res) => {
   }
 };
 
+deleteReservation = async (req, res) => {
+  try {
+    const reservationId = req.params.id;
+
+    const deletedReservation = await Reservation.findByIdAndDelete(reservationId);
+
+    if (!deletedReservation) {
+      return res.status(404).render('error', { error: 'Reservation not found' });
+    }
+
+    res.redirect('/reservedlistings');
+  } catch (error) {
+    console.error('Error deleting reservation:', error);
+    res.status(500).render('error', { error: 'Internal Server Error' });
+  }
+};
+
+showUpdateForm = async (req, res) => {
+  try {
+    const reservationId = req.params.id;
+
+    const reservation = await Reservation.findById(reservationId);
+
+    if (!reservation) {
+      return res.status(404).render('error', { error: 'Reservation not found' });
+    }
+
+    res.render('reservations/updateForm', { title: 'Update Reservation', reservation });
+  } catch (error) {
+    console.error('Error showing update form:', error);
+    res.status(500).render('error', { error: 'Internal Server Error' });
+  }
+};
+
+
 module.exports = {
   showReservationForm,
   postReservation,
-  showReservedListings
+  showReservedListings,
+  deleteReservation,
+  showUpdateForm
 };

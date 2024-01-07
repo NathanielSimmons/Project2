@@ -16,8 +16,15 @@
         <li>End Date: <%= reservation.endDate %></li>
       </ul>
 
+      <div class="reservation-actions">
+        <a href="/reservations/<%= reservation._id %>/update">Update</a>
+        <a href="/reservations/<%= reservation._id %>/delete">Delete</a>
+      </div>
+
       <hr class="reservation-separator">
     </div>
+
+
   <% }) %>
 </div>
 
