@@ -1,0 +1,36 @@
+<%- include('./partials/header') %>
+
+<div class="update-form-container">
+
+  <form action="/reservedlistings/<%= reservation._id %>/update" method="POST" class="update-form">
+    <p class="updateform-title"><strong>Current Details:</strong></p>
+    <p><strong>First Name:</strong> <%= reservation.firstName %></p>
+    <p><strong>Last Name:</strong> <%= reservation.lastName %></p>
+    <p><strong>Start Date:</strong> <%= reservation.startDate.toDateString() %></p>
+    <p><strong>End Date:</strong> <%= reservation.endDate.toDateString() %></p>
+
+    <div class="form-group">
+      <label for="firstName">New First Name:</label>
+      <input type="text" id="firstName" name="firstName" value="<%= reservation.firstName %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">New Last Name:</label>
+      <input type="text" id="lastName" name="lastName" value="<%= reservation.lastName %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="startDate">New Start Date:</label>
+      <input type="date" id="startDate" name="startDate" value="<%= reservation.startDate.toISOString().split('T')[0] %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="endDate">New End Date:</label>
+      <input type="date" id="endDate" name="endDate" value="<%= reservation.endDate.toISOString().split('T')[0] %>" required>
+    </div>
+
+    <button type="submit">Update Reservation</button>
+  </form>
+</div>
+
+<%- include('./partials/footer') %>

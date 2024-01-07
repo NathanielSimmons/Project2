@@ -94,18 +94,40 @@ showUpdateForm = async (req, res) => {
       return res.status(404).render('error', { error: 'Reservation not found' });
     }
 
-    res.render('reservations/updateForm', { title: 'Update Reservation', reservation });
+    res.render('updateform', { title: 'Update Reservation', reservation });
   } catch (error) {
     console.error('Error showing update form:', error);
     res.status(500).render('error', { error: 'Internal Server Error' });
   }
 };
 
+updateReservation = async (req, res) => {
+  try {
+    const reservationId = req.params.id;
+    const { firstName, lastName, startDate, endDate } = req.body;
+
+    
+    const reservation = await Reservation.findById(reservationId);
+
+    reservation.firstName = firstName;
+    reservation.lastName = lastName;
+    reservation.startDate = new Date(startDate);
+    reservation.endDate = new Date(endDate);
+
+    await reservation.save();
+
+    res.redirect('/reservedlistings');
+  } catch (error) {
+    console.error('Error updating reservation:', error);
+    res.status(500).render('error', { error: 'Internal Server Error' });
+  }
+};
 
 module.exports = {
   showReservationForm,
   postReservation,
   showReservedListings,
   deleteReservation,
-  showUpdateForm
+  showUpdateForm,
+  updateReservation
 };
