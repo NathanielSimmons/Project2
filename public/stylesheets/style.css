@@ -161,6 +161,10 @@ footer {
   text-align: left;
 }
 
+.reservation-form-container address {
+  color: #a60000;
+}
+
 .reservation-form-container label {
   font-weight: bold;
   display: block;
@@ -197,4 +201,23 @@ footer {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+}
+
+.reserved-listings-container {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px; 
+  text-align: center;
+}
+
+.reservation-address {
+  color: #a60000;
+}
+
+.reservation-separator {
+  margin: 20px 0;
+}
+
+.listing-address{
+  color: #a60000;
 }

@@ -47,7 +47,7 @@ app.use('/users', usersRouter);
 app.use('/all-listings',listingsRouter);
 app.use('/newlistings',newListingsRouter);
 app.use('/reservations', reservationsRouter);
-app.use('/reservations', reservedListingsRouter);
+app.use('/reservedlistings', reservedListingsRouter);
 
 
 // catch 404 and forward to error handler

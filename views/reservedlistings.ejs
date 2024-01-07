@@ -1,9 +1,9 @@
-<%- include('../partials/header', { title: title }) %>
+<%- include('./partials/header') %>
 
 <div class="reserved-listings-container">
   <% reservations.forEach((reservation) => { %>
     <div class="reserved-listing">
-      <h2><%= reservation.listing.address %></h2>
+      <h2 class="reservation-address"><%= reservation.listing.address %></h2>
       <div class="pictures-container">
         <% reservation.listing.pictures.slice(0, 3).forEach((picture, index) => { %>
           <img src="<%= picture %>" alt="Listing Picture">
@@ -15,6 +15,10 @@
         <li>Start Date: <%= reservation.startDate %></li>
         <li>End Date: <%= reservation.endDate %></li>
       </ul>
+
+      <hr class="reservation-separator">
     </div>
   <% }) %>
 </div>
+
+<%- include('./partials/footer') %>

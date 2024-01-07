@@ -61,7 +61,7 @@ showReservedListings = async (req, res) => {
   try {
   
     const reservations = await Reservation.find().populate('listing');
-    res.render('reservations/reservedListings', { title: 'Reserved Listings', reservations });
+    res.render('reservedlistings', { title: 'Reserved Listings', reservations });
   } catch (error) {
     console.error('Error fetching reserved listings:', error);
     res.status(500).render('error', { error: 'Internal Server Error' });
