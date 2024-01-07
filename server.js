@@ -14,7 +14,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var listingsRouter = require('./routes/all-listings');
 var newListingsRouter = require('./routes/newlistings');
-var reservationsRouter = require('./routes/reservations')
+var reservationsRouter = require('./routes/reservations');
+var reservedListingsRouter = require('./routes/reservedlistings')
 
 var app = express();
 
@@ -43,9 +44,11 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/all-listings',listingsRouter)
-app.use('/newlistings',newListingsRouter)
+app.use('/all-listings',listingsRouter);
+app.use('/newlistings',newListingsRouter);
 app.use('/reservations', reservationsRouter);
+app.use('/reservations', reservedListingsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
