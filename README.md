@@ -1,8 +1,8 @@
-# Mock Airbnb with Node.js, Express.js, and MongoDB
+# Mock Zillow with Node.js, Express.js, and MongoDB
 
 ## Overview
 
-Welcome to the Mock Airbnb Project! This web application aims to replicate the basic functionalities of Airbnb using Node.js, Express.js, and MongoDB. In addition to the core booking and listing features, the project will implement OAuth authentication to enable users to sign in as well as a third party API to fetch sample listing data.
+Welcome to the Mock Zillow Project! This web application aims to replicate the basic functionalities of Airbnb using Node.js, Express.js, and MongoDB. In addition to the core booking and listing features, the project will implement OAuth authentication to enable users to sign in as well as a third party API to fetch sample listing data.
 
 
 ## Features
