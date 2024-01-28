@@ -264,3 +264,30 @@ footer {
 .update-form-container button:hover {
   background-color: #45a049;
 }
+
+.review-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+}
+
+.review-form {
+  width: 80%; /* Adjust as needed */
+}
+
+.review-details {
+  text-align: center;
+  color: #a60000;
+}
+
+.review-pictures {
+  display: flex;
+  justify-content: center;
+}
+
+.review-pictures img {
+  width: 100px; /* Adjust as needed */
+  height: auto;
+  margin: 0 10px; /* Adjust as needed */
+}

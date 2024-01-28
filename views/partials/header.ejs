@@ -14,7 +14,7 @@
       <% if (user) { %>
         <a href="/newlistings/new" <%- title === 'Add Listing' ? 'class="active"' : '' %>>ADD LISTING</a>
         <a href="/reservedlistings" <%- title === 'Reserved Listings' ? 'class="active"' : '' %>>RESERVED LISTINGS</a>
-        <a href="/listings/review" <%- title === 'Review Listing' ? 'class="active"' : '' %>>REVIEW LISTING</a>
+        <!-- <a href="/listings/review" <%- title === 'Review Listing' ? 'class="active"' : '' %>>REVIEW LISTING</a> -->
         <a href="/logout">LOG OUT</a>
       <% } else { %>
         <a href="/auth/google" class="login">LOG IN</a>
