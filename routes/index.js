@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: '' });
 });
 
-// Google OAuth login route
+// Google OAuth  route
 router.get('/auth/google', passport.authenticate(
   // Which passport strategy is being used?
   'google',
